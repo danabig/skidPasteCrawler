@@ -6,7 +6,7 @@
 	<body onload="handleSubmitUsername()">
 		<div class="main-content">
 			<label>Click to crawl and iterate between pastes </label>
-			<button onclick="handleNextClick()">Search</button>
+			<button id="nextButton" onclick="handleNextClick()" disabled>Next paste</button>
 			<div id="result">
 				<label>title: </label><label id="title"></label><br/>
 				<label>url: </label><label id="url"></label><br/>
@@ -21,6 +21,7 @@
       				  type: 'POST',
       				  data: {"username":"skidPaste"},
 				      success: function(data) {
+				      	document.getElementById('nextButton').disabled = false;
 				        setData(data);
 				      }.bind(this),
 				      error: function(xhr, status, err) {
@@ -43,6 +44,7 @@
 				      }
 				    });
 				}
+
 				function setData(data){
 					document.getElementById('title').innerHTML = data.title;
 					document.getElementById('url').innerHTML = data.url;
