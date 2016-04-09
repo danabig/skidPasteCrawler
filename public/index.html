@@ -1,35 +1,25 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>LinkedIn Crawler</title>		
+		<title>Pastes Crawler</title>
 	</head>
 	<body>
 		<div class="main-content">
-			<div id="counter">
-				<label>enter username to get top skills count: </label>
-				<input id="inputTxtCount" type="text"></input>				
-				<button onclick="handleSubmitCount()">Count</button>
-				<label id="countResult"></label>
-			</div>
-			<label>Enter username to search: </label>
-			<input id="inputTxt" type="text"></input>
+			<label>Click to crawl and iterate between pastes </label>
 			<button onclick="handleSubmitUsername()">Search</button>
 			<div id="result">
-				<label>name: </label><label id="name"></label><br/>
 				<label>title: </label><label id="title"></label><br/>
-				<label>position: </label><label id="position"></label><br/>
-				<label>summary: </label><label id="summary"></label><br/>
-				<label>skills: </label><label id="skills"></label><br/>
+				<label>url: </label><label id="url"></label><br/>
+				<label>comtent: </label><label id="content"></label><br/>
 			</div>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 			<script>
 				function handleSubmitUsername(){
-					var name = document.getElementById('inputTxt').value;
 					$.ajax({
-				      url: '/api/linkedinsearch',
+				      url: '/api/pastes',
 				      dataType: 'json',
       				  type: 'POST',
-      				  data: {"username":name}, 
+      				  data: {"username":"skidPaste"},
 				      success: function(data) {
 				        setData(data);
 				      }.bind(this),
@@ -39,32 +29,8 @@
 				    });
 				}
 
-				function handleSubmitCount(){
-					var name = document.getElementById('inputTxtCount').value;
-					$.ajax({
-				      url: '/api/linkedinsearch/count',
-				      dataType: 'json',
-      				  type: 'POST',
-      				  data: {"username":name}, 
-				      success: function(data) {
-				        setCount(data);
-				      }.bind(this),
-				      error: function(xhr, status, err) {
-				        console.log(status+', '+err.toString());
-				      }
-				    });
-				}
-
-				function setCount(data){
-					document.getElementById('countResult').innerHTML = data.count; 
-				}
-
 				function setData(data){
-					document.getElementById('name').innerHTML = data.name; 
 					document.getElementById('title').innerHTML = data.title;
-					document.getElementById('position').innerHTML = data.position;
-					document.getElementById('summary').innerHTML = data.summary;
-					document.getElementById('skills').innerHTML = data.skills;
 				}
 			</script>
 		</div>

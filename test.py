@@ -7,10 +7,10 @@ parser = MyHTMLPArser(txt)
 # parser.feed(txt.read())
 newProfile = parser.getJson()
 # print json.dumps(parser.getJson(),indent=4, separators=(',', ': '))
-with open('linkedinUsers.json', 'r') as file:
+with open('pastes.json', 'r') as file:
     linkedInUsers = json.loads(file.read())
 linkedInUsers.append(newProfile)
-with open('linkedinUsers.json', 'w') as file:
+with open('pastes.json', 'w') as file:
     file.write(json.dumps(linkedInUsers, indent=4, separators=(',', ': ')))
 
 print json.dumps(linkedInUsers,indent=4, separators=(',', ': '))
