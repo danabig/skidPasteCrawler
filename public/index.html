@@ -3,14 +3,14 @@
 	<head>
 		<title>Pastes Crawler</title>
 	</head>
-	<body>
+	<body onload="handleSubmitUsername()">
 		<div class="main-content">
 			<label>Click to crawl and iterate between pastes </label>
 			<button onclick="handleSubmitUsername()">Search</button>
 			<div id="result">
 				<label>title: </label><label id="title"></label><br/>
 				<label>url: </label><label id="url"></label><br/>
-				<label>comtent: </label><label id="content"></label><br/>
+				<label>content: </label><label id="content"></label><br/>
 			</div>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 			<script>
@@ -29,8 +29,24 @@
 				    });
 				}
 
+				function handleSubmitUsername(){
+					$.ajax({
+				      url: '/api/nextPaste',
+				      dataType: 'json',
+      				  type: 'POST',
+      				  data: {"username":"skidPaste"},
+				      success: function(data) {
+				        setData(data);
+				      }.bind(this),
+				      error: function(xhr, status, err) {
+				        console.log(status+', '+err.toString());
+				      }
+				    });
+				}
 				function setData(data){
 					document.getElementById('title').innerHTML = data.title;
+					document.getElementById('url').innerHTML = data.url;
+					document.getElementById('content').innerHTML = data.content;
 				}
 			</script>
 		</div>

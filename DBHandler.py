@@ -1,5 +1,5 @@
 import json
-# DB_FILE = 'pastes.json'
+
 
 class DBHandler:
     def __init__(self, path):
@@ -16,5 +16,8 @@ class DBHandler:
         self.setDB()
 
     def setDB(self):
+        print(self.pastesData)
+        jsonObj = json.dumps(self.pastesData)
         with open(self.dbpath, 'w') as file:
-            file.write(json.dumps(self.pastesData, indent=4, separators=(',', ': ')))
+            file.write(jsonObj)
+        print("db set")
