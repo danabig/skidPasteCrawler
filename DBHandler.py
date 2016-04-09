@@ -15,9 +15,11 @@ class DBHandler:
         self.pastesData.append(data)
         self.setDB()
 
+    def getItemsList(self):
+        return self.pastesData
+
     def setDB(self):
-        print(self.pastesData)
-        jsonObj = json.dumps(self.pastesData)
+        jsonObj = json.dumps(self.pastesData, indent=4, separators=(',', ': '))
         with open(self.dbpath, 'w') as file:
             file.write(jsonObj)
         print("db set")

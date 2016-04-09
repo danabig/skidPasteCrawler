@@ -6,7 +6,7 @@
 	<body onload="handleSubmitUsername()">
 		<div class="main-content">
 			<label>Click to crawl and iterate between pastes </label>
-			<button onclick="handleSubmitUsername()">Search</button>
+			<button onclick="handleNextClick()">Search</button>
 			<div id="result">
 				<label>title: </label><label id="title"></label><br/>
 				<label>url: </label><label id="url"></label><br/>
@@ -29,7 +29,7 @@
 				    });
 				}
 
-				function handleSubmitUsername(){
+				function handleNextClick(){
 					$.ajax({
 				      url: '/api/nextPaste',
 				      dataType: 'json',

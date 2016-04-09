@@ -32,7 +32,6 @@ class MyHTMLParser:
         return self.pastes
 
     def convertByteToString(self, text):
-       # txt = unicodedata.normalize('NFKD', text).encode('ascii','ignore')
        txt = text.decode(encoding='UTF-8')
        print('convert')
        return txt
