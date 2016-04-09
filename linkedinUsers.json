@@ -1,0 +1,14 @@
+[
+    {
+        "username": "dummy",
+        "data": {
+            "skills": [
+                "dummy skills"
+            ],
+            "position": "dummy position",
+            "summary": "dummy summary",
+            "name": "dummy name",
+            "title": "dummmy title"
+        }
+    }
+]
